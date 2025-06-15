@@ -4,6 +4,9 @@
 #include <nlohmann/json.hpp>
 #include <iostream>
 
+/// @file plan_executor.cpp
+/// @brief Implementation of the PlanExecutor node.
+
 namespace robot_planner {
 
 using json = nlohmann::json;
@@ -19,10 +22,11 @@ PlanExecutor::PlanExecutor(const rclcpp::NodeOptions & options)
   RCLCPP_INFO(this->get_logger(), "PlanExecutor node started.");
 }
 
-PlanExecutor::~PlanExecutor()
-{
-}
 
+
+/**
+ * @brief Parse a JSON plan received on the subscription and trigger execution.
+ */
 void PlanExecutor::plan_callback(const std_msgs::msg::String::SharedPtr msg)
 {
   try {
@@ -44,6 +48,9 @@ void PlanExecutor::plan_callback(const std_msgs::msg::String::SharedPtr msg)
   }
 }
 
+/**
+ * @brief Execute all actions contained in the provided plan.
+ */
 void PlanExecutor::execute_plan(const std::vector<Action> & plan)
 {
   for (const auto & action : plan) {
@@ -58,6 +65,9 @@ void PlanExecutor::execute_plan(const std::vector<Action> & plan)
   }
 }
 
+/**
+ * @brief Handle the execution of a move action.
+ */
 void PlanExecutor::execute_move(const std::map<std::string, std::string> & params)
 {
   auto it = params.find("target_room");
@@ -69,6 +79,9 @@ void PlanExecutor::execute_move(const std::map<std::string, std::string> & param
   }
 }
 
+/**
+ * @brief Handle the execution of a pick-up action.
+ */
 void PlanExecutor::execute_pickup(const std::map<std::string, std::string> & params)
 {
   auto it = params.find("object");

@@ -2,33 +2,49 @@
 #define ROBOT_PLANNER__PLAN_EXECUTOR_HPP_
 
 #include "rclcpp/rclcpp.hpp"
+#include "std_msgs/msg/string.hpp"
 #include <string>
 #include <vector>
 #include <map>
 
+/// @file plan_executor.hpp
+/// @brief Defines the PlanExecutor node which sequentially executes plans.
+
 // Определяем структуру действия, которая будет использоваться в планах
 namespace robot_planner {
 
-struct Action {
+/// @brief Description of a single symbolic action.
+struct Action
+{
+  /// Name of the action
   std::string name;
+  /// Key-value map with action parameters
   std::map<std::string, std::string> params;
 };
 
+/// @brief ROS2 node that receives a plan and executes each action sequentially.
 class PlanExecutor : public rclcpp::Node
 {
 public:
+  /// Construct a PlanExecutor node
   explicit PlanExecutor(const rclcpp::NodeOptions & options = rclcpp::NodeOptions());
-  virtual ~PlanExecutor();
+  /// Default destructor
+  ~PlanExecutor() override = default;
 
-  // Функция для последовательного выполнения плана
+  /// Execute the given plan one action at a time
+  /// @param plan Plan represented as a vector of actions
   void execute_plan(const std::vector<Action> & plan);
 
 private:
-  // Callback для обработки входящего сообщения с планом (в формате JSON)
+  /// Callback processing an incoming plan in JSON form
+  /// @param msg Message containing a JSON encoded plan
   void plan_callback(const std_msgs::msg::String::SharedPtr msg);
 
-  // Функции для выполнения конкретных действий
+  /// Execute the "move" action
+  /// @param params Parameters for the action
   void execute_move(const std::map<std::string, std::string> & params);
+  /// Execute the "pick-up" action
+  /// @param params Parameters for the action
   void execute_pickup(const std::map<std::string, std::string> & params);
 
   rclcpp::Subscription<std_msgs::msg::String>::SharedPtr plan_subscription_;

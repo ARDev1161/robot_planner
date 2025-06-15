@@ -4,6 +4,9 @@
 
 using namespace std::chrono_literals;
 
+/// @file drop_action_node.cpp
+/// @brief Plansys2 action node that drops a carried object.
+
 class DropAction : public plansys2::ActionExecutorClient
 {
 public:

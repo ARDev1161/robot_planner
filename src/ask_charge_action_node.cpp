@@ -22,6 +22,9 @@
 
 using namespace std::chrono_literals;
 
+/// @file ask_charge_action_node.cpp
+/// @brief Action node that moves the robot to a charging station.
+
 class AskCharge : public plansys2::ActionExecutorClient
 {
 public:
