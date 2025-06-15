@@ -11,6 +11,8 @@ Robot Planner is an example ROS2 package demonstrating high level planning and e
   `plansys2_executor` to demonstrate integration with Nav2 and other systems.
 - **Launch file** – starts the executor, converter and all action nodes with parameters
   from `config/config.yaml`.
+- **PDDL Template Receiver** – subscribes to a topic with a domain PDDL template,
+  fills placeholders and saves the generated domain file.
 - **PDDL files** – example domain and problem description located in the `pddl` directory.
 
 ## Building
@@ -40,6 +42,11 @@ ros2 launch robot_planner planner.launch.py
 This will start the plan executor, BT converter and all demo action nodes.
 Plans can be published as JSON strings to the `generated_plan` topic to trigger
 execution.
+
+### Domain Template
+
+`PddlTemplateReceiver` listens for a PDDL domain template. The topic name can be
+configured via the `domain_template_topic` parameter in `config/config.yaml`.
 
 ## Directory Overview
 
