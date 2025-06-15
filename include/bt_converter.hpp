@@ -5,22 +5,37 @@
 #include <vector>
 #include <map>
 
+/// @file bt_converter.hpp
+/// @brief Utilities for converting a plan into a Behavior Tree description.
+
 namespace robot_planner {
 
-// Можно использовать ту же структуру Action, что и в plan_executor.hpp
-struct Action {
+/// @brief Action description used when converting plans.
+///
+/// This structure mirrors the one defined in plan_executor.hpp and is
+/// intentionally duplicated to keep the converter independent of the executor
+/// implementation.
+struct Action
+{
+  /// Name of the action
   std::string name;
+  /// Action parameters keyed by name
   std::map<std::string, std::string> params;
 };
 
+/// @brief Helper class that produces a Behavior Tree XML description from a plan.
 class BTConverter
 {
 public:
-  BTConverter();
-  ~BTConverter();
+  /// Default constructor
+  BTConverter() = default;
+  /// Default destructor
+  ~BTConverter() = default;
 
-  // Преобразует план (вектор действий) в XML-строку для BT
-  std::string convertPlanToXML(const std::vector<Action>& plan);
+  /// Convert a plan to the XML representation used by BehaviorTree.CPP
+  /// @param plan Sequence of actions to convert
+  /// @return XML string describing the behavior tree
+  std::string convertPlanToXML(const std::vector<Action> & plan);
 };
 
 }  // namespace robot_planner

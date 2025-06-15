@@ -4,6 +4,9 @@
 
 using namespace std::chrono_literals;
 
+/// @file search_action_node.cpp
+/// @brief Action node that simulates searching for a target.
+
 class SearchAction : public plansys2::ActionExecutorClient
 {
 public:

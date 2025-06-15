@@ -4,6 +4,9 @@
 
 using namespace std::chrono_literals;
 
+/// @file wait_and_watch_action_node.cpp
+/// @brief Action node that waits in place while monitoring with a camera.
+
 class WaitAndWatchAction : public plansys2::ActionExecutorClient
 {
 public:

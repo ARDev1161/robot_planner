@@ -4,6 +4,9 @@
 
 using namespace std::chrono_literals;
 
+/// @file wait_action_node.cpp
+/// @brief Action node that waits for a specified duration.
+
 class WaitAction : public plansys2::ActionExecutorClient
 {
 public:

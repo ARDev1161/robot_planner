@@ -5,8 +5,12 @@
 #include "rclcpp_action/rclcpp_action.hpp"
 #include "nav2_msgs/action/navigate_to_pose.hpp"
 
+/// @file move_action_node.cpp
+/// @brief Plansys2 action node for moving the robot using Nav2.
+
 using namespace std::chrono_literals;
 
+/// @brief Action node that sends a navigation goal via Nav2.
 class MoveAction : public plansys2::ActionExecutorClient
 {
 public:
