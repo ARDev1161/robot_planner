@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>robot_planner</name>
+  <version>0.1.0</version>
+  <description>
+    Пакет для высокоуровневого планирования и исполнения планов с использованием PDDL, ROS2 и BehaviorTree.CPP.
+  </description>
+  <maintainer email="your_email@example.com">Your Name</maintainer>
+  <license>Apache License 2.0</license>
+
+  <!-- Build tool -->
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <!-- Зависимости времени сборки и исполнения -->
+  <depend>rclcpp</depend>
+  <depend>std_msgs</depend>
+  <depend>launch</depend>
+  <depend>launch_ros</depend>
+  <depend>yaml-cpp</depend>
+  <depend>behaviortree_cpp_v3</depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

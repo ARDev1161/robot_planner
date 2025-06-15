@@ -1,0 +1,38 @@
+robot_planner:
+  domain_file: "path/to/domain.pddl"    # Путь к файлу домена
+  problem_file: "path/to/problem.pddl"    # Путь к файлу проблемы
+  planner:
+    type: "TFD"                         # Тип планировщика (например, TFD или другой, совместимый с PDDL 3.0/2.1)
+    timeout: 60                         # Таймаут планирования (в секундах)
+    optimize: true                      # Флаг оптимизации плана
+
+  # Словарь соответствия символических локаций с геометрическими координатами (для Nav2)
+  location_coordinates:
+    room1:
+      x: 1.0
+      y: 2.0
+      theta: 0.0
+    room2:
+      x: 3.5
+      y: 4.2
+      theta: 1.57
+    room3:
+      x: 5.0
+      y: 3.0
+      theta: 3.14
+    room4:
+      x: 2.2
+      y: 1.8
+      theta: 0.78
+    room5:
+      x: 0.0
+      y: 0.0
+      theta: 0.0
+
+  # Дополнительные параметры для исполнения плана
+  execution:
+    behavior_tree:
+      enabled: true                   # Включение генерации и исполнения поведенческого дерева
+    monitoring:
+      active: true                    # Активное мониторирование выполнения плана
+      frequency: 10                   # Частота мониторинга (в Гц)
