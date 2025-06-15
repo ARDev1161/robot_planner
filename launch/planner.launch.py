@@ -39,6 +39,17 @@ def generate_launch_description():
         )
     )
 
+    # Нода для получения PDDL домена из шаблона
+    nodes.append(
+        Node(
+            package='robot_planner',
+            executable='pddl_template_receiver',
+            name='pddl_template_receiver',
+            output='screen',
+            parameters=[config_file, {'domain_template_topic': '/pddl_domain_template'}]
+        )
+    )
+
     # Отдельные action-ноды для каждого действия, описанного в PDDL
     nodes.append(
         Node(

@@ -23,10 +23,14 @@ ament_target_dependencies(plan_executor rclcpp std_msgs yaml-cpp behaviortree_cp
 add_executable(bt_converter src/bt_converter.cpp)
 ament_target_dependencies(bt_converter rclcpp std_msgs yaml-cpp behaviortree_cpp_v3)
 
+add_executable(pddl_template_receiver src/pddl_template_receiver.cpp)
+ament_target_dependencies(pddl_template_receiver rclcpp std_msgs)
+
 # Установка исполняемых файлов
 install(TARGETS
   plan_executor
   bt_converter
+  pddl_template_receiver
   DESTINATION lib/${PROJECT_NAME}
 )
 
