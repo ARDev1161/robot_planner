@@ -1,17 +1,20 @@
 #include "robot_planner/bt_converter.hpp"
 #include <sstream>
 
+/// @file bt_converter.cpp
+/// @brief Implementation of the BTConverter utility.
+
 namespace robot_planner {
 
-BTConverter::BTConverter()
-{
-}
-
-BTConverter::~BTConverter()
-{
-}
-
-std::string BTConverter::convertPlanToXML(const std::vector<Action>& plan)
+/**
+ * @brief Convert a plan into BehaviorTree.CPP XML representation.
+ *
+ * The conversion is very simple and only handles a few predefined actions.
+ *
+ * @param plan Sequence of actions forming the plan.
+ * @return Generated XML string.
+ */
+std::string BTConverter::convertPlanToXML(const std::vector<Action> & plan)
 {
   std::ostringstream xml_stream;
   xml_stream << "<root main_tree_to_execute=\"MainTree\"><BehaviorTree ID=\"MainTree\">";

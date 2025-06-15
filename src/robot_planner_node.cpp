@@ -14,6 +14,9 @@
 using namespace std::chrono_literals;
 using NavigateToPose = nav2_msgs::action::NavigateToPose;
 
+/// @file robot_planner_node.cpp
+/// @brief Example node demonstrating integration with Nav2 and Plansys2.
+
 class RobotPlannerNode : public rclcpp::Node
 {
 public:

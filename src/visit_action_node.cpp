@@ -4,6 +4,9 @@
 
 using namespace std::chrono_literals;
 
+/// @file visit_action_node.cpp
+/// @brief Action node that marks a location as visited.
+
 class VisitAction : public plansys2::ActionExecutorClient
 {
 public:

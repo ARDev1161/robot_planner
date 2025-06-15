@@ -4,6 +4,10 @@
 
 using namespace std::chrono_literals;
 
+/// @file pickup_action_node.cpp
+/// @brief Plansys2 action node that simulates picking up an object.
+
+/// Simple action that increases progress until the object is picked up.
 class PickupAction : public plansys2::ActionExecutorClient
 {
 public:

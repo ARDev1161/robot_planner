@@ -3,6 +3,9 @@
 #include "robot_planner/bt_converter.hpp"
 #include <vector>
 
+/// @file main.cpp
+/// @brief Example entry point demonstrating usage of PlanExecutor and BTConverter.
+
 int main(int argc, char ** argv)
 {
   // Инициализация ROS2

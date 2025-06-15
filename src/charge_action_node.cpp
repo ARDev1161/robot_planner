@@ -22,6 +22,9 @@
 
 using namespace std::chrono_literals;
 
+/// @file charge_action_node.cpp
+/// @brief Action node that simulates robot charging.
+
 class ChargeAction : public plansys2::ActionExecutorClient
 {
 public:

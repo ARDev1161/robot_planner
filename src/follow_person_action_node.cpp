@@ -6,6 +6,9 @@
 
 using namespace std::chrono_literals;
 
+/// @file follow_person_action_node.cpp
+/// @brief Plansys2 action node that follows a detected person using Nav2.
+
 class FollowPersonAction : public plansys2::ActionExecutorClient
 {
 public:

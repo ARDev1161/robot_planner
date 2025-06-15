@@ -6,6 +6,9 @@
 
 using namespace std::chrono_literals;
 
+/// @file patrol_move_action_node.cpp
+/// @brief Action node that sends a patrol navigation goal.
+
 class PatrolMoveAction : public plansys2::ActionExecutorClient
 {
 public:
