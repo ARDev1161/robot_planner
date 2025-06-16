@@ -18,6 +18,9 @@
   <depend>launch_ros</depend>
   <depend>yaml-cpp</depend>
   <depend>behaviortree_cpp_v3</depend>
+  <depend>plansys2_executor</depend>
+  <depend>rclcpp_action</depend>
+  <depend>nav2_msgs</depend>
 
   <export>
     <build_type>ament_cmake</build_type>
