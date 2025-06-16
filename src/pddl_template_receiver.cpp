@@ -1,4 +1,4 @@
-#include "robot_planner/pddl_template_receiver.hpp"
+#include "pddl_template_receiver.hpp"
 #include <fstream>
 #include <algorithm>
 
@@ -59,13 +59,4 @@ void PddlTemplateReceiver::save_to_file(const std::string & pddl) const
 }
 
 }  // namespace robot_planner
-
-int main(int argc, char ** argv)
-{
-  rclcpp::init(argc, argv);
-  auto node = std::make_shared<robot_planner::PddlTemplateReceiver>();
-  rclcpp::spin(node);
-  rclcpp::shutdown();
-  return 0;
-}
 

@@ -17,34 +17,12 @@ def generate_launch_description():
 
     nodes = []
 
-    # Планировочная нода, которая обрабатывает поступающий план (например, из топика)
+    # Единое приложение со всеми необходимыми нодами
     nodes.append(
         Node(
             package='robot_planner',
-            executable='plan_executor',
-            name='plan_executor_node',
-            output='screen',
-            parameters=[config_file]
-        )
-    )
-
-    # Нода для преобразования плана в поведенческое дерево (BT)
-    nodes.append(
-        Node(
-            package='robot_planner',
-            executable='bt_converter',
-            name='bt_converter_node',
-            output='screen',
-            parameters=[config_file]
-        )
-    )
-
-    # Нода для получения PDDL домена из шаблона
-    nodes.append(
-        Node(
-            package='robot_planner',
-            executable='pddl_template_receiver',
-            name='pddl_template_receiver',
+            executable='robot_planner',
+            name='robot_planner',
             output='screen',
             parameters=[config_file, {'domain_template_topic': '/pddl_domain_template'}]
         )
