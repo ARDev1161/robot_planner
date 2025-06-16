@@ -16,21 +16,18 @@ find_package(behaviortree_cpp_v3 REQUIRED)
 
 include_directories(include)
 
-# Добавляем исполняемые файлы из каталога src
-add_executable(plan_executor src/plan_executor.cpp)
-ament_target_dependencies(plan_executor rclcpp std_msgs yaml-cpp behaviortree_cpp_v3)
-
-add_executable(bt_converter src/bt_converter.cpp)
-ament_target_dependencies(bt_converter rclcpp std_msgs yaml-cpp behaviortree_cpp_v3)
-
-add_executable(pddl_template_receiver src/pddl_template_receiver.cpp)
-ament_target_dependencies(pddl_template_receiver rclcpp std_msgs)
+# Собираем единое приложение со всеми нодами
+add_executable(robot_planner
+  src/main.cpp
+  src/plan_executor.cpp
+  src/bt_converter.cpp
+  src/pddl_template_receiver.cpp
+)
+ament_target_dependencies(robot_planner rclcpp std_msgs yaml-cpp behaviortree_cpp_v3)
 
 # Установка исполняемых файлов
 install(TARGETS
-  plan_executor
-  bt_converter
-  pddl_template_receiver
+  robot_planner
   DESTINATION lib/${PROJECT_NAME}
 )
 

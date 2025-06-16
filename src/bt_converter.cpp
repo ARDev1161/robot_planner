@@ -1,4 +1,4 @@
-#include "robot_planner/bt_converter.hpp"
+#include "bt_converter.hpp"
 #include <sstream>
 
 /// @file bt_converter.cpp
