@@ -4,24 +4,12 @@
 #include <string>
 #include <vector>
 #include <map>
+#include "common_types.hpp"
 
 /// @file bt_converter.hpp
 /// @brief Utilities for converting a plan into a Behavior Tree description.
 
 namespace robot_planner {
-
-/// @brief Action description used when converting plans.
-///
-/// This structure mirrors the one defined in plan_executor.hpp and is
-/// intentionally duplicated to keep the converter independent of the executor
-/// implementation.
-struct Action
-{
-  /// Name of the action
-  std::string name;
-  /// Action parameters keyed by name
-  std::map<std::string, std::string> params;
-};
 
 /// @brief Helper class that produces a Behavior Tree XML description from a plan.
 class BTConverter
