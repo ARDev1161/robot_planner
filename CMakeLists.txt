@@ -15,6 +15,7 @@ find_package(behaviortree_cpp_v3 REQUIRED)
 find_package(plansys2_executor REQUIRED)
 find_package(rclcpp_action REQUIRED)
 find_package(nav2_msgs REQUIRED)
+find_package(lifecycle_msgs REQUIRED)
 
 include_directories(include)
 
@@ -42,6 +43,7 @@ ament_target_dependencies(ask_charge_action_node
   plansys2_executor
   rclcpp_action
   nav2_msgs
+  lifecycle_msgs
 )
 
 add_executable(charge_action_node src/charge_action_node.cpp)
@@ -50,6 +52,7 @@ ament_target_dependencies(charge_action_node
   plansys2_executor
   rclcpp_action
   nav2_msgs
+  lifecycle_msgs
 )
 
 add_executable(drop_action_node src/drop_action_node.cpp)
@@ -58,6 +61,7 @@ ament_target_dependencies(drop_action_node
   plansys2_executor
   rclcpp_action
   nav2_msgs
+  lifecycle_msgs
 )
 
 add_executable(follow_person_action_node src/follow_person_action_node.cpp)
@@ -66,6 +70,7 @@ ament_target_dependencies(follow_person_action_node
   plansys2_executor
   rclcpp_action
   nav2_msgs
+  lifecycle_msgs
 )
 
 add_executable(move_action_node src/move_action_node.cpp)
@@ -74,6 +79,7 @@ ament_target_dependencies(move_action_node
   plansys2_executor
   rclcpp_action
   nav2_msgs
+  lifecycle_msgs
 )
 
 add_executable(patrol_move_action_node src/patrol_move_action_node.cpp)
@@ -82,6 +88,7 @@ ament_target_dependencies(patrol_move_action_node
   plansys2_executor
   rclcpp_action
   nav2_msgs
+  lifecycle_msgs
 )
 
 add_executable(pickup_action_node src/pickup_action_node.cpp)
@@ -90,6 +97,7 @@ ament_target_dependencies(pickup_action_node
   plansys2_executor
   rclcpp_action
   nav2_msgs
+  lifecycle_msgs
 )
 
 add_executable(search_action_node src/search_action_node.cpp)
@@ -98,6 +106,7 @@ ament_target_dependencies(search_action_node
   plansys2_executor
   rclcpp_action
   nav2_msgs
+  lifecycle_msgs
 )
 
 add_executable(visit_action_node src/visit_action_node.cpp)
@@ -106,6 +115,7 @@ ament_target_dependencies(visit_action_node
   plansys2_executor
   rclcpp_action
   nav2_msgs
+  lifecycle_msgs
 )
 
 add_executable(wait_action_node src/wait_action_node.cpp)
@@ -114,6 +124,7 @@ ament_target_dependencies(wait_action_node
   plansys2_executor
   rclcpp_action
   nav2_msgs
+  lifecycle_msgs
 )
 
 add_executable(wait_and_watch_action_node src/wait_and_watch_action_node.cpp)
@@ -122,6 +133,7 @@ ament_target_dependencies(wait_and_watch_action_node
   plansys2_executor
   rclcpp_action
   nav2_msgs
+  lifecycle_msgs
 )
 
 # Установка исполняемых файлов
