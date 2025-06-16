@@ -1,6 +1,7 @@
 #include "rclcpp/rclcpp.hpp"
 #include "plan_executor.hpp"
 #include "bt_converter.hpp"
+#include "common_types.hpp"
 #include "pddl_template_receiver.hpp"
 #include <vector>
 #include <memory>

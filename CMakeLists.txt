@@ -31,6 +31,11 @@ install(TARGETS
   DESTINATION lib/${PROJECT_NAME}
 )
 
+# Install public headers
+install(DIRECTORY include/
+  DESTINATION include
+)
+
 # Установка launch-файлов, конфигурации и PDDL файлов
 install(DIRECTORY launch/
   DESTINATION share/${PROJECT_NAME}/launch

@@ -6,21 +6,12 @@
 #include <string>
 #include <vector>
 #include <map>
+#include "common_types.hpp"
 
 /// @file plan_executor.hpp
 /// @brief Defines the PlanExecutor node which sequentially executes plans.
 
-// Определяем структуру действия, которая будет использоваться в планах
 namespace robot_planner {
-
-/// @brief Description of a single symbolic action.
-struct Action
-{
-  /// Name of the action
-  std::string name;
-  /// Key-value map with action parameters
-  std::map<std::string, std::string> params;
-};
 
 /// @brief ROS2 node that receives a plan and executes each action sequentially.
 class PlanExecutor : public rclcpp::Node
