@@ -1,11 +1,16 @@
 robot_planner:
-  domain_file: "path/to/domain.pddl"    # Путь к файлу домена
-  domain_template_topic: "/pddl_domain_template"   # Топик с шаблоном PDDL домена
-  problem_file: "path/to/problem.pddl"    # Путь к файлу проблемы
+  domain_file: "path/to/domain.pddl"    # Path to the domain description
+  domain_template_topic: "/pddl_domain_template"   # Topic used for PDDL domain template
+  problem_file: "path/to/problem.pddl"    # Path to the problem description
   planner:
-    type: "TFD"                         # Тип планировщика (например, TFD или другой, совместимый с PDDL 3.0/2.1)
-    timeout: 60                         # Таймаут планирования (в секундах)
-    optimize: true                      # Флаг оптимизации плана
+    type: "UPF"                         # Planner plugin type (UPF plugin)
+    solver: "OPTIC"                     # Default UPF solver
+    timeout: 60                         # Planning timeout in seconds
+    optimize: true                      # Request optimal plan
+    heuristic: ""                       # Optional heuristic
+    search_algorithm: ""                # Optional search strategy
+    verbose: false                      # Enable detailed planner output
+    additional_args: {}                 # Extra UPF planner arguments
 
   # Словарь соответствия символических локаций с геометрическими координатами (для Nav2)
   location_coordinates:
