@@ -16,6 +16,7 @@ find_package(plansys2_executor REQUIRED)
 find_package(rclcpp_action REQUIRED)
 find_package(nav2_msgs REQUIRED)
 find_package(lifecycle_msgs REQUIRED)
+find_package(plansys2_upf_plugin REQUIRED)
 
 include_directories(include)
 

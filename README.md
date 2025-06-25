@@ -8,7 +8,9 @@ Robot Planner is an example ROS2 package demonstrating high level planning and e
   sequentially.
 - **BTConverter** – converts plans to BehaviorTree.CPP XML for BT-based execution.
 - **Action nodes** – example implementations (`move`, `pickup`, `drop`, etc.) built with
-  `plansys2_executor` to demonstrate integration with Nav2 and other systems.
+- `plansys2_upf_plugin` support – Plansys2 can run with the Unified Planning
+  Framework using this plugin. The default solver is **OPTIC** and parameters
+  are configured in `config/config.yaml`.
 - **Launch file** – starts the executor, converter and all action nodes with parameters
   from `config/config.yaml`.
 - **PDDL Template Receiver** – subscribes to a topic with a domain PDDL template,
