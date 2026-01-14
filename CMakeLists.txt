@@ -10,13 +10,18 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(std_srvs REQUIRED)
+find_package(ament_index_cpp REQUIRED)
 find_package(yaml-cpp REQUIRED)
 find_package(behaviortree_cpp_v3 REQUIRED)
 find_package(plansys2_executor REQUIRED)
+find_package(plansys2_msgs REQUIRED)
 find_package(rclcpp_action REQUIRED)
 find_package(nav2_msgs REQUIRED)
 find_package(lifecycle_msgs REQUIRED)
-find_package(plansys2_upf_plugin REQUIRED)
+find_package(plansys2_upf_plan_solver REQUIRED)
+find_package(plansys2_problem_expert REQUIRED)
+find_package(plansys2_pddl_parser REQUIRED)
 
 include_directories(include)
 
@@ -137,9 +142,27 @@ ament_target_dependencies(wait_and_watch_action_node
   lifecycle_msgs
 )
 
+add_executable(goal_gateway src/goal_gateway.cpp)
+ament_target_dependencies(goal_gateway
+  rclcpp
+  std_msgs
+  plansys2_problem_expert
+  plansys2_pddl_parser
+)
+
+add_executable(pddl_aggregator pddl_aggregator/src/pddl_aggregator.cpp)
+ament_target_dependencies(pddl_aggregator
+  rclcpp
+  std_msgs
+  std_srvs
+  ament_index_cpp
+)
+
 # Установка исполняемых файлов
 install(TARGETS
   robot_planner
+  pddl_aggregator
+  goal_gateway
   ask_charge_action_node
   charge_action_node
   drop_action_node
@@ -162,6 +185,9 @@ install(DIRECTORY include/
 # Установка launch-файлов, конфигурации и PDDL файлов
 install(DIRECTORY launch/
   DESTINATION share/${PROJECT_NAME}/launch
+)
+install(DIRECTORY pddl_aggregator/launch/
+  DESTINATION share/${PROJECT_NAME}/launch/pddl_aggregator
 )
 install(DIRECTORY config/
   DESTINATION share/${PROJECT_NAME}/config

@@ -27,7 +27,7 @@ mkdir -p ~/ros2_ws/src
 cd ~/ros2_ws/src
 # clone repository here
 cd ..
-colcon build --packages-select robot_planner
+colcon build --packages-select robot_planner pddl_aggregator
 ```
 
 ROS2 Foxy or later is required along with dependencies listed in `package.xml`.
@@ -41,9 +41,47 @@ source install/setup.bash
 ros2 launch robot_planner planner.launch.py
 ```
 
-This will start the plan executor, BT converter and all demo action nodes.
+This will start the plan executor, BT converter, the PDDL aggregator, Plansys2 bringup, and all demo action nodes.
 Plans can be published as JSON strings to the `generated_plan` topic to trigger
 execution.
+
+To launch the PDDL aggregator by itself and override topic names:
+
+```bash
+ros2 launch pddl_aggregator pddl_aggregator.launch.py \
+  map_pddl_topic:=/pddl/map \
+  people_topic:=/people \
+  objects_topic:=/objects \
+  robots_topic:=/robots \
+  problem_pddl_topic:=/pddl/problem
+```
+
+The aggregator exposes services for fetching the current domain/problem:
+
+```bash
+ros2 service call /get_problem_pddl std_srvs/srv/Trigger {}
+ros2 service call /get_domain_pddl std_srvs/srv/Trigger {}
+ros2 service call /pddl/get_problem std_srvs/srv/Trigger {}
+ros2 service call /pddl/get_domain std_srvs/srv/Trigger {}
+```
+
+### Plansys2 Bringup
+
+The launch file includes `plansys2_bringup` by default. If your install uses a different
+launch file or argument names, override these from the command line:
+
+```bash
+ros2 launch robot_planner planner.launch.py \
+  plansys2_launch_package:=plansys2_bringup \
+  plansys2_launch_file:=plansys2_bringup_launch.py \
+  plansys2_domain_arg:=domain_file \
+  plansys2_problem_arg:=problem_file \
+  plansys2_domain_file:=pddl/domain.pddl \
+  plansys2_problem_file:=/tmp/problem.pddl
+```
+
+Planning is triggered on demand via Plansys2 services (for example, `/planner/get_plan`
+and `/executor/execute_plan`).
 
 ### Domain Template
 

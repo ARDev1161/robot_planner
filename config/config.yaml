@@ -1,44 +1,27 @@
 robot_planner:
-  domain_file: "path/to/domain.pddl"    # Path to the domain description
-  domain_template_topic: "/pddl_domain_template"   # Topic used for PDDL domain template
-  problem_file: "path/to/problem.pddl"    # Path to the problem description
-  planner:
-    type: "UPF"                         # Planner plugin type (UPF plugin)
-    solver: "OPTIC"                     # Default UPF solver
-    timeout: 60                         # Planning timeout in seconds
-    optimize: true                      # Request optimal plan
-    heuristic: ""                       # Optional heuristic
-    search_algorithm: ""                # Optional search strategy
-    verbose: false                      # Enable detailed planner output
-    additional_args: {}                 # Extra UPF planner arguments
+  ros__parameters:
+    domain_file: "path/to/domain.pddl"
+    domain_template_topic: "/pddl_domain_template"
+    problem_file: "path/to/problem.pddl"
 
-  # Словарь соответствия символических локаций с геометрическими координатами (для Nav2)
-  location_coordinates:
-    room1:
-      x: 1.0
-      y: 2.0
-      theta: 0.0
-    room2:
-      x: 3.5
-      y: 4.2
-      theta: 1.57
-    room3:
-      x: 5.0
-      y: 3.0
-      theta: 3.14
-    room4:
-      x: 2.2
-      y: 1.8
-      theta: 0.78
-    room5:
-      x: 0.0
-      y: 0.0
-      theta: 0.0
+goal_gateway:
+  ros__parameters:
+    goal_topic: "/robot_planner/goal"
+    status_topic: "/robot_planner/goal_status"
+    set_goal_service: "/problem_expert/add_problem_goal"
+    allow_parallel: false
 
-  # Дополнительные параметры для исполнения плана
-  execution:
-    behavior_tree:
-      enabled: true                   # Включение генерации и исполнения поведенческого дерева
-    monitoring:
-      active: true                    # Активное мониторирование выполнения плана
-      frequency: 10                   # Частота мониторинга (в Гц)
+pddl_aggregator:
+  ros__parameters:
+    map_pddl_topic: "/pddl/map"
+    people_topic: ""
+    objects_topic: ""
+    robots_topic: ""
+    problem_pddl_topic: "/pddl/problem"
+    domain_file: "pddl/domain.pddl"
+    problem_output_file: "/tmp/problem.pddl"
+    problem_name: ""
+    domain_name: ""
+    people_predicate: "person_at"
+    objects_predicate: ""
+    robots_predicate: "at"

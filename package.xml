@@ -14,15 +14,21 @@
   <!-- Зависимости времени сборки и исполнения -->
   <depend>rclcpp</depend>
   <depend>std_msgs</depend>
+  <depend>std_srvs</depend>
+  <depend>ament_index_cpp</depend>
   <depend>launch</depend>
   <depend>launch_ros</depend>
   <depend>yaml-cpp</depend>
   <depend>behaviortree_cpp_v3</depend>
   <depend>plansys2_executor</depend>
+  <depend>plansys2_msgs</depend>
+  <depend>plansys2_problem_expert</depend>
+  <depend>plansys2_pddl_parser</depend>
+  <depend>plansys2_bringup</depend>
   <depend>rclcpp_action</depend>
   <depend>nav2_msgs</depend>
   <depend>lifecycle_msgs</depend>
-  <depend>plansys2_upf_plugin</depend>
+  <depend>plansys2_upf_plan_solver</depend>
 
   <export>
     <build_type>ament_cmake</build_type>

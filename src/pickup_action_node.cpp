@@ -12,7 +12,7 @@ class PickupAction : public plansys2::ActionExecutorClient
 {
 public:
   PickupAction()
-  : plansys2::ActionExecutorClient("pick-up", 250ms),
+  : plansys2::ActionExecutorClient("pick_up", 250ms),
     progress_(0.0)
   {}
 
